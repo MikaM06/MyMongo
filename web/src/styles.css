@@ -1,0 +1,147 @@
+@import 'tailwindcss';
+@import '@fontsource/ibm-plex-sans/400.css';
+@import '@fontsource/ibm-plex-sans/500.css';
+@import '@fontsource/ibm-plex-sans/600.css';
+@import '@fontsource/ibm-plex-mono/400.css';
+@import '@fontsource/ibm-plex-mono/500.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --bg: #f3f4f5;
+  --panel: #ffffff;
+  --panel-2: #f7f8f9;
+  --hover: #eceef0;
+  --line: #dcdfe3;
+  --line-strong: #c4c9cf;
+  --text: #1c2024;
+  --muted: #5b636d;
+  --faint: #8a929b;
+  --brand: #00ed64;
+  --brand-ink: #00684a;
+  --brand-soft: #e6f4ee;
+  --brand-fg: #ffffff;
+  --primary: #00684a;
+  --primary-hover: #005a40;
+  --danger: #c62828;
+  --danger-soft: #fbeaea;
+  --warn: #9a5b00;
+  --warn-soft: #fdf3e1;
+  --info: #1f5fbf;
+  --t-string: #116b3e;
+  --t-number: #1f5fbf;
+  --t-oid: #9a4d00;
+  --t-date: #6b3fb0;
+  --t-bool: #a3266d;
+  --t-null: #8a929b;
+  --t-key: #2b3138;
+  --shadow: 0 4px 16px rgb(20 24 28 / 0.12);
+}
+
+.dark {
+  --bg: #16181b;
+  --panel: #1d2024;
+  --panel-2: #212429;
+  --hover: #272b30;
+  --line: #2e3238;
+  --line-strong: #3b4047;
+  --text: #dfe2e6;
+  --muted: #9aa1aa;
+  --faint: #6c737c;
+  --brand: #00ed64;
+  --brand-ink: #3ecf8e;
+  --brand-soft: #1e2d27;
+  --brand-fg: #ffffff;
+  --primary: #13804f;
+  --primary-hover: #179059;
+  --danger: #ef6b62;
+  --danger-soft: #3a2224;
+  --warn: #e0a640;
+  --warn-soft: #362c1b;
+  --info: #79a8f0;
+  --t-string: #8fcf9f;
+  --t-number: #8ab4f0;
+  --t-oid: #e5a46b;
+  --t-date: #c3a2ee;
+  --t-bool: #ee8fc0;
+  --t-null: #6c737c;
+  --t-key: #c8cdd3;
+  --shadow: 0 4px 16px rgb(0 0 0 / 0.45);
+}
+
+@theme inline {
+  --font-sans:
+    'IBM Plex Sans', ui-sans-serif, system-ui, 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, Consolas, monospace;
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-hover: var(--hover);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-faint: var(--faint);
+  --color-brand: var(--brand);
+  --color-brand-ink: var(--brand-ink);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-fg: var(--brand-fg);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-info: var(--info);
+  --color-t-string: var(--t-string);
+  --color-t-number: var(--t-number);
+  --color-t-oid: var(--t-oid);
+  --color-t-date: var(--t-date);
+  --color-t-bool: var(--t-bool);
+  --color-t-null: var(--t-null);
+  --color-t-key: var(--t-key);
+  --shadow-pop: var(--shadow);
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    height: 100%;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    font-size: 13.5px;
+    line-height: 1.45;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: rgb(31 95 191 / 0.25);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--info);
+    outline-offset: 1px;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--line-strong) transparent;
+  }
+}
+
+@layer components {
+  .cm-editor {
+    font-family: var(--font-mono);
+    font-size: 12.5px;
+    background: transparent;
+  }
+
+  .cm-editor.cm-focused {
+    outline: none;
+  }
+}

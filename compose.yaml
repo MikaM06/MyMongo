@@ -1,0 +1,39 @@
+name: mymongo
+
+services:
+  mymongo:
+    build: .
+    image: mymongo:latest
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      HOST: 0.0.0.0
+      PORT: 8080
+      MYMONGO_DATA_DIR: /data
+    ports:
+      - '${MYMONGO_BIND_ADDRESS:-127.0.0.1}:${MYMONGO_HOST_PORT:-8088}:8080'
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    volumes:
+      - mymongo-data:/data
+    read_only: true
+    tmpfs:
+      - /tmp
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      - mymongo
+    logging:
+      driver: json-file
+      options:
+        max-size: 10m
+        max-file: '5'
+
+volumes:
+  mymongo-data:
+
+networks:
+  mymongo:

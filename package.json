@@ -1,0 +1,25 @@
+{
+  "name": "mymongo",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "workspaces": [
+    "server",
+    "web"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "dev": "npm run dev --workspace server & npm run dev --workspace web",
+    "build": "npm run build --workspace web && npm run build --workspace server",
+    "test": "npm run test --workspace server",
+    "typecheck": "npm run typecheck --workspaces",
+    "lint": "eslint . && prettier --check .",
+    "fix": "eslint . --fix && prettier --write ."
+  },
+  "devDependencies": {
+    "gts": "^7.0.0",
+    "typescript": "^6.0.3"
+  }
+}
